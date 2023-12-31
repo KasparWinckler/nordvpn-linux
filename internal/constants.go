@@ -33,7 +33,7 @@ const (
 	LogPath = "/var/log/nordvpn/"
 
 	// NordvpnGroup that can access daemon socket
-	NordvpnGroup = "nordvpn"
+	NordvpnGroup = "root"
 
 	// DaemonSocket defines system daemon socket file location
 	DaemonSocket = RunDir + "nordvpnd.sock"
@@ -96,7 +96,7 @@ const (
 	ResolvconfFilePath = "/etc/resolv.conf"
 
 	// AppDataPath defines path where app data is stored
-	AppDataPath = "/var/lib/nordvpn/"
+	AppDataPath = "/storage/.kodi/userdata/addon_data/service.nordvpn/"
 
 	DatFilesPath = AppDataPath + "data/"
 
