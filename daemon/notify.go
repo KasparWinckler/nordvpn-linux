@@ -52,6 +52,15 @@ func notify(id int64, body string) error {
 		cmd = exec.Command(
 			"kdialog", "--title", summary, "--passivepopup", body, "--icon", IconPath, "3",
 		)
+	} else if internal.IsCommandAvailable("kodi-send") {
+		cmd = exec.Command(
+			"kodi-send", fmt.Sprintf("--action=RunScript(service.nordvpn, notification, %s, %s, %s)", summary, body, IconPath),
+		)
+		out, err := cmd.CombinedOutput()
+		if err != nil {
+			return errors.New(strings.Trim(string(out), "\n"))
+		}
+		return nil
 	} else {
 		return nil
 	}
