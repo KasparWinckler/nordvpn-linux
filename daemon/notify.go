@@ -46,7 +46,15 @@ func notify(id int64, body string) error {
 	var cmd *exec.Cmd
 	commandContext, cancelFunc := context.WithTimeout(context.Background(), time.Second*5)
 	defer cancelFunc()
-	if internal.IsCommandAvailable("notify-send") {
+	if internal.IsCommandAvailable("kodi-send") {
+		cmd = exec.CommandContext(commandContext,
+			"kodi-send",
+			fmt.Sprintf("--action=RunScript(service.nordvpn, notification, %s, %s, %s)", summary, body, IconPath))
+		err := cmd.Run()
+		if err != nil {
+			return fmt.Errorf("running notify command: %w", err)
+		}
+	} else if internal.IsCommandAvailable("notify-send") {
 		cmd = exec.CommandContext(commandContext, "notify-send", "-t", "3000", "-i", IconPath, summary, body)
 	} else if internal.IsCommandAvailable("kdialog") {
 		cmd = exec.CommandContext(commandContext,
