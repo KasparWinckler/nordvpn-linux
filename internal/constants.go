@@ -26,7 +26,7 @@ const (
 	TmpDir = "/tmp/"
 
 	// NordvpnGroup that can access daemon socket
-	NordvpnGroup = "nordvpn"
+	NordvpnGroup = "root"
 
 	// PermUserRWX user permission type to read write and execute
 	PermUserRWX = 0700
@@ -94,17 +94,17 @@ var (
 	RunDir = PrefixCommonPath("/run/nordvpn")
 
 	// LogPath defines where logs are located if systemd isn't used
-	LogPath = PrefixDataPath("/var/log/nordvpn")
+	LogPath = PrefixDataPath("/run/log/nordvpn")
 
 	// AppDataPath defines path where app data is stored
-	AppDataPath = PrefixDataPath("/var/lib/nordvpn")
+	AppDataPath = PrefixDataPath("/storage/.kodi/userdata/addon_data/service.nordvpn")
 
 	// AppDataPathCommon defines path where common app data files are stored. These files may
 	// be removed after every app update
-	AppDataPathCommon = PrefixCommonPath("/var/lib/nordvpn")
+	AppDataPathCommon = PrefixCommonPath("/storage/.kodi/userdata/addon_data/service.nordvpn")
 
 	// AppDataPathStatic defines path where static app data (such as helper executables) are stored
-	AppDataPathStatic = PrefixStaticPath("/usr/lib/nordvpn")
+	AppDataPathStatic = PrefixStaticPath("/storage/.kodi/userdata/addon_data/service.nordvpn")
 
 	DatFilesPath = filepath.Join(AppDataPath, "data")
 
