@@ -14,14 +14,15 @@ const defaultFWMarkValue uint32 = 0xe1f1
 func newConfig(machineIDGetter MachineIDGetter) *Config {
 	return &Config{
 		Technology:   Technology_NORDLYNX,
-		Firewall:     true,
+		Firewall:     false,
 		FirewallMark: defaultFWMarkValue,
 		AutoConnectData: AutoConnectData{
 			Protocol: Protocol_UDP,
 		},
-		MachineID:  machineIDGetter.GetMachineID(),
-		UsersData:  &UsersData{Notify: UidBoolMap{}, NotifyOff: UidBoolMap{}, TrayOff: UidBoolMap{}},
-		TokensData: map[int64]TokenData{},
+		MachineID:    machineIDGetter.GetMachineID(),
+		UsersData:    &UsersData{Notify: UidBoolMap{}, NotifyOff: UidBoolMap{}, TrayOff: UidBoolMap{}},
+		TokensData:   map[int64]TokenData{},
+		LanDiscovery: true,
 	}
 }
 
