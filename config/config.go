@@ -14,7 +14,7 @@ const defaultFWMarkValue uint32 = 0xe1f1
 func newConfig(machineIDGetter MachineIDGetter) *Config {
 	return &Config{
 		Technology:   Technology_NORDLYNX,
-		Firewall:     true,
+		Firewall:     false,
 		FirewallMark: defaultFWMarkValue,
 		AutoConnectData: AutoConnectData{
 			Protocol: Protocol_UDP,
@@ -23,6 +23,7 @@ func newConfig(machineIDGetter MachineIDGetter) *Config {
 		UsersData:        &UsersData{NotifyOff: UidBoolMap{}, TrayOff: UidBoolMap{}},
 		TokensData:       map[int64]TokenData{},
 		AnalyticsConsent: ConsentUndefined,
+		LanDiscovery:     true,
 	}
 }
 
