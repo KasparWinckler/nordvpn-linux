@@ -14,12 +14,13 @@ const defaultFWMarkValue uint32 = 0xe1f1
 func newConfig(machineIDGetter MachineIDGetter) *Config {
 	return &Config{
 		VPNProtocol:      VPNProtocol_VPN_PROTOCOL_NORDLYNX,
-		Firewall:         true,
+		Firewall:         false,
 		FirewallMark:     defaultFWMarkValue,
 		MachineID:        machineIDGetter.GetMachineID(),
 		UsersData:        &UsersData{NotifyOff: UidBoolMap{}, TrayOff: UidBoolMap{}},
 		TokensData:       map[int64]TokenData{},
 		AnalyticsConsent: ConsentUndefined,
+		LanDiscovery:     true,
 	}
 }
 
